@@ -1,0 +1,139 @@
+CSS'y Poziom Basic || http://teamtreehouse.com/library/css-basics 
+
+---------ISTOTNE LINKI---------
+  CSS References (vals, properties etc):
+    - https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+    - https://docs.webplatform.org/wiki/css
+    - http://www.w3.org/Style/CSS/Overview.en.html
+  
+  CSS support on diffrent browsers:
+    - http://caniuse.com/
+
+---------SPOSOBY DODAWANIA CSSóW DO HTMLa---------
+  Inline Style      - używane bezpośrednio w element tag'u w pliku html
+  Internal Style    - wbudowane w head'a wewnątrz pliku html (podobnie jak external tylko uzyte wewnątrz tagu <style>
+  External Style    - w zewnętrznym pliku css
+    - aby zadziałało trzeba w html'u wrzucic link do pliku css (w headzie) np. <link rel="stylesheet" href="css/style.css"> 
+    - @import 'nazwa.css'; umożliwia import reguł z innego pliku CSS (na samym początku pliku dodane)
+  
+---------CSS SYNTAX---------
+  selector, 
+  selector2 {
+    parameter-something:  value1; /* This is a CSS comment */
+    parameter2:           value2 value-col valuesomething;
+  }
+
+---------RODZAJE SELECTORÓW---------
+  Universal selector        *{ }                              - wybiera wszystko
+  Type selector             footer {}, h1 {}, header {}       - wybiera dany tag
+  ID selector               #cyc {}, #button {}               - wybiera element po ID; w html'u trzeba umiescic ID elementu np. <div id="primary-content"> 
+                                                              - można też użyć ID żeby skoczyć do danego miejsca na stronie np. <a href="top">BACK TO TOP</a>
+                                                              - ID musi być UNIKATOWE dla danego elementu!
+  Class selector            .bolded {}, .main-content {}      - wybiera element po classie; w html'u trzeba umiescic clase w elemencie np. <div class="primary-content">
+                                                              - classy można używać dla wielu elementów
+                                                              - element może mieć wiecej niż jedną class'e np. <div class="primary-content t-border rounded">
+  Descendant Selector       selector-zew selector-wew {}      - umożliwia wybranie elementu który znajduje sie wewnątrz innego elementu (tagu etc)
+                                                              - np. do wyboru elementów listy - ul li {}
+  Pseudo:classes            element:pseudo-class              - do używania przy specjalnym zachowaniu selectorów np a:visited {}, .foo:hover {}
+  
+---------DATA TYPES---------
+  LINK: https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type
+  
+---------LENGHT UNITS---------
+  ABSOULUTE LENGHT UNITS
+    px      - pixel units, wartosc abstakcyjna (nie ma związku z rzeczywistymi pixelami na ekranie, wielkosc zalezna od zagęszczenia pixeli - pixel density)
+  RELATIVE LENGHT UNITS
+    %       - Viewport-percentage, zależna od wielkosci parenta (np. font-size: 50% bedzie połową wielkości font-size parenta)
+    em      - Parent relative size (1em = 16px przeważnie, zaleznie od przegladarki) // ValueInPx/16px = ValueInEm
+    rem     - Root relative size    
+    
+---------COLOR VALUES---------
+  KEYWORDS                      orange, lightblue                         for simple colors: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+  HEXADECIMAL Vals              #ffa949                                   #ff0033 można skrócic do #f03
+  RGB Vals                      rgb(r-val, g-val, b-val)                  Valsy od 0-255, 0-czarny; 255-biały
+  RGBa Vals                     rgba((r-val, g-val, b-val, alpha-val)     RGB z dodaną alphą (od 0 do 1 - 0.4 to 40%) 
+  
+---------TEXT STYLES---------
+  font-size                     lenght-units-vals
+  text-align                    left,right,center,justify         wyrównanie tekstu
+  text-transform                uppercase,lowercase,capitalized
+  text-decoration               underline,none...
+  font-weight                   normal,bold,100..900,lighter              inne niz normal i bold zalezne od tego czy czcionka moze wyswietlac
+  font-family                   sans-sarif,monospace,etc                  używamy font stacka np. font-family: "Helvetiva Neue", Helvetica, Arial, sans-serif;
+                                                                          www.cssfontstack.com - strona do generowania font-stacków z podglądem
+  font-style                    normal,italic,oblique                     stopień pochylenia czcionki (oblique najbardziej pochylona - dostępna zależnie od rodzaju fontu)
+  line-height                   normal,unitless-val,px,em,rem,%           używać unitless-val ze wzgledu na fuckupy np. line-height: 1.5; (obliczane ze wzgledu na wielkość czcionki)
+  font                          font-weight font-size/line-height font-family         np. font: bold 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+---------BOX MODEL---------
+  
+      +-------------------------
+      |   MARGIN                      Outside the BOX
+      |   +-BORDER--------------
+      |   |   PADDING                 Inside the BOX
+      |   |   +-----------------
+      |   |   | [CONTENT]
+      |   |   +-----------------
+      |   +---------------------      
+      +-------------------------          
+                
+                
+  color                         simple-val, rgb, hash-val, etc            kolor fontu
+  background-color              j.w.                                      kolor tła
+  padding-top/bottom            lenght-unit
+  padding-right/left            lenght-unit
+  padding                       lenght-unit                               przy 1. wartości - globalna
+                                                                          przy 2. wartosciach - top i bottom/ left i right (np. padding: 120px 100px;
+                                                                          przy 3. wartosciach - top / left i right / bottom
+                                                                          przy 4. wartosciach - top / right / bottom / left - clockwise od 12:00
+                                                                          przy uzyciu % jako lenght-unit to wartość jest obliczana po calkowitej szerokości elemntu (np 18% procen calkowitej szerokosci elementu)
+  border-width                  key-val, lenght-val                       grubosc bordera
+  border-style                  dotted, dashed, solid, etc                typ bordera
+  border-color                  color-val                                 można uzywać do definiowania każdego boku np. border-color: red white blue yellow;
+  border                        border-width border-style border-color    
+  border-top/right/left/bottom-style                                      to override shorthand use of border
+  border-top/right/left/bottom-color
+  border-top/right/left/bottom  border-width border-style border-color    dla stworzenia bordera po jednej stronie
+  
+---------DISPLAY VALUES---------
+ display:
+  none                  wyłącza element (element znika)
+  inline                w linii (nie ma marginów)
+  block                 defaultowy dla div, headingow, paragraphow - zabiera całą szerokość
+  inline-block
+
+---------BLOCK SIZES---------
+  height                                      ustala wielkosc bloku (końcowa wartość jest zwiekszona o padding - chyba ze użyjemy box-sizing: border-box;)
+  width                                       j.w.
+  box-sizing        border-box,inne?          dzieki temu określenie heigh/width blocku daje jego rzeczywistą wartość (uwzględnione są paddingi)
+  max-width         px,%,etc                    np img { max-width: 100% } umożliwia resize obrazka wraz z resizem przeglądarki (obrazek zajmuje zawsze 100% swojego blocka)
+  
+---------BACKGROUND IMAGE---------
+  background-image          url           np. background-image: url("../img/cyc.jpg"); .. mowi że trzeba cofnąc sie o jeden folder wstecz (czyli z CSS do folderu głównego apki)
+  background-repeat         key-vals      repeat, repeat-y, repeat-x, no-reapeat
+  background-size           np %          ustawia obrazek do % wartości całego blocku, albo keyword cover aby ładnie wyrównac obrazek do blocku
+  background-color          color-vals    ustawia kolor tła, warto ustawić gdyby użytkownik blokował wyświetlanie obrazków
+  background-position       x-val y-val   pozycjonuje obrazek (można użyć keywordów center, bottom, top etc, albo %) np background-position: centerl albo background-position: 50% top;
+  background                color-val image-val repeat-val position-val / size-val            shorthand, warto jednak uzywać komend pojedynczych zeby zwiekszyć czytelnosc kodu
+  
+---------FLOATS---------
+  float                     keyword         left,right etc - ustawia element jako float (pływa)
+  overflow                  keyword         np auto, nadawane parentowi w którym są floaty - force'uje poprawne wyswietlanie floatów (mogą wystąpić błędy ze scroll barem)
+  
+  FLOATS CLEARFIX                           umożliwia poprawne wyświetlanie floatów, działa lepiej niż overflow: auto, trzeba dodać jako klase do parenta floatów
+  .group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+---------LIST STYLING---------
+  list-style-type           keyvals           np square etc - zgodnie z MDN, ustawia dany typ znacznika
+  list-style-position       keyvals           np. inside - wrzuca znczniki wewnątrz bordera
+  list-style                                  shorthand
+  
+  
+  
+  
+  
+  NASTEPNE Designing with the Latest Features: Text Shadows
