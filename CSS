@@ -54,6 +54,16 @@ CSS'y Poziom Basic || http://teamtreehouse.com/library/css-basics
   RGBa Vals                     rgba((r-val, g-val, b-val, alpha-val)     RGB z dodaną alphą (od 0 do 1 - 0.4 to 40%) 
   
 ---------TEXT STYLES---------
+http://www.fontsquirrel.com/ - darmowe fonty
+
+  @font-face {                                                                                  uzywa fonty z serwera apki (w tym przypadku w folderze apka/fonts/...
+      font-family: "Abolition Regular";                                                         potem uzywamy font-family: "nasz font" (tak jakby znajdowal sie on na dysku usera
+      src:  url('../fonts/abolition-regular-webfont.eot');
+      src:  url('../fonts/abolition-regular-webfont.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/abolition-regular-webfont.woff') format('woff'),
+            url('../fonts/abolition-regular-webfont.ttf') format('truetype');
+  }
+  
   font-size                     lenght-units-vals
   text-align                    left,right,center,justify         wyrównanie tekstu
   text-transform                uppercase,lowercase,capitalized
@@ -64,6 +74,7 @@ CSS'y Poziom Basic || http://teamtreehouse.com/library/css-basics
   font-style                    normal,italic,oblique                     stopień pochylenia czcionki (oblique najbardziej pochylona - dostępna zależnie od rodzaju fontu)
   line-height                   normal,unitless-val,px,em,rem,%           używać unitless-val ze wzgledu na fuckupy np. line-height: 1.5; (obliczane ze wzgledu na wielkość czcionki)
   font                          font-weight font-size/line-height font-family         np. font: bold 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing                l.val                                     odstępy pomiedzy literami
   
 ---------BOX MODEL---------
   
@@ -132,8 +143,36 @@ CSS'y Poziom Basic || http://teamtreehouse.com/library/css-basics
   list-style-position       keyvals           np. inside - wrzuca znczniki wewnątrz bordera
   list-style                                  shorthand
   
+---------COOL CSS FEATURES---------
+  text-shadow                     l.val(x3) col.val.            1. HORIZONTAL (+ w prawo)         http://markdotto.com/playground/3d-text/
+                                                                2. VERTICAL (+ daje w dół)        3D text gist using text-shadow
+                                                                3. BLUR VALUE
+                                                                4. COLOR VAL
   
+  box-shadow                      KW l.val.(x4) col.val         KW: inset - cień wewnętrznym
+                                                                1. Hor  2. Ver  3. Blur   4.Spread (we wszystkich kierunkach)
   
+  border-radius                   l.val(x4)                     1. lewy górny -> clockwise
+  border-top-left-radius          l.val         
+  border-top-right-radius         l.val
+  border-bottom-right-radius      l.val  
+  border-bottom-left-radius       l.val
   
-  
-  NASTEPNE Designing with the Latest Features: Text Shadows
+  background-image: linear-gradient(...)    monżna też w "background: ...", color może być KEYWORDEM transparent
+                                            ... === [ <angle> | to <side-or-corner> ,]? <color-stop> [, <color-stop>]+ )
+                                            where <side-or-corner> = [left | right] || [top | bottom]
+                                            and <color-stop>     = <color> [ <percentage> | <length> ]?   
+                                            np. linear-gradient( to left top, blue, green 40%, red )
+                                            
+  background-image: radial-gradient(...)                                          
+                                            keyword (np. circle, domyslnie elipsa), colorstopy
+                                            
+  @media  device-type (check-things) {...}              device-type: np. all (domyślnie, nie trzeba uzywać), screen, print etc
+                                                        check-things: np. max/min-width
+                                                        max == dla wszystkich z viewportem o maxymalnej wartości (powyżej nie działa)
+                                                        np. @media (min-width: 90px) and (max-width: 200px) {...}
+                                                        
+  <head>
+    ...    
+    <meta name="viewport" content="width=device-width">           dzieki temu wyświetla sie na telefonach lepiej (wtedy działają @media)
+  </head>
